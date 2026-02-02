@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Azur & Or - Location de Luxe en Guadeloupe | Gwada Bel</title>
+    <meta name="description" content="Villa de prestige avec piscine à débordement, vue mer panoramique, et services haut de gamme. Location saisonnière luxe à Saint-François, Guadeloupe.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A961;
+            --dark-gold: #B8935A;
+            --navy: #0A1931;
+            --light-navy: #1E3A5F;
+            --cream: #F4E4C1;
+            --white: #FFFFFF;
+            --gray: #666666;
+            
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--navy);
+            overflow-x: hidden;
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 25, 49, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 60px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            letter-spacing: 4px;
+            color: var(--cream);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 14px 32px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .nav-cta:hover::before {
+            left: 0;
+        }
+
+        .nav-cta:hover {
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        /* Hero Section with Video */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+
+        /* Fallback gradient if video doesn't load */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                #0A1931 0%, 
+                #1E3A5F 30%,
+                #2A5F7F 60%, 
+                #3A7FA0 100%);
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(10, 25, 49, 0.7) 0%, 
+                rgba(10, 25, 49, 0.4) 40%,
+                rgba(10, 25, 49, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 1000px;
+            padding: 0 40px;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 400;
+            opacity: 0;
+            animation: fadeIn 1.5s 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: fadeIn 1.5s 0.6s forwards;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeIn 1.5s 0.9s forwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 1.5s 1.2s forwards;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: 2px solid var(--gold);
+            opacity: 0;
+            animation: fadeIn 1.5s 1.5s forwards;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(201, 169, 97, 0.5);
+            border-radius: 20px;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeIn 1.5s 1.8s forwards;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { top: 10px; opacity: 1; }
+            50% { top: 20px; opacity: 0.5; }
+            100% { top: 10px; opacity: 1; }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 120px 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: #F8F9FA;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 50px 40px;
+            background: white;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 30px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+        }
+
+        .feature-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        /* Specifications Section */
+        .specs-section {
+            background: var(--navy);
+            color: white;
+        }
+
+        .specs-section .section-title {
+            color: white;
+        }
+
+        .specs-section .section-label {
+            color: var(--gold);
+        }
+
+        .specs-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .spec-item:hover {
+            background: rgba(201, 169, 97, 0.05);
+            border-color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .spec-icon-svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            flex-shrink: 0;
+        }
+
+        .spec-content {
+            flex: 1;
+        }
+
+        .spec-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .spec-value {
+            font-size: 18px;
+            color: white;
+            font-weight: 400;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent 0%,
+                rgba(10, 25, 49, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Contact/WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* Chat Widget */
+        .chat-trigger {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .chat-trigger:hover {
+            transform: scale(1.1);
+            background: var(--dark-gold);
+        }
+
+        .chat-trigger-icon {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .chat-widget {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-widget.active {
+            display: flex;
+            animation: slideInUp 0.4s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            background: var(--navy);
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .chat-info {
+            flex: 1;
+        }
+
+        .chat-info h4 {
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .chat-status {
+            font-size: 13px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chat-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #25D366;
+            border-radius: 50%;
+        }
+
+        .chat-close {
+            width: 35px;
+            height: 35px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .chat-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background: #F8F9FA;
+        }
+
+        .chat-message {
+            margin-bottom: 20px;
+            max-width: 80%;
+        }
+
+        .chat-message.bot {
+            align-self: flex-start;
+        }
+
+        .chat-message.user {
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .chat-message p {
+            padding: 15px 20px;
+            border-radius: 15px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .chat-message.bot p {
+            background: white;
+            color: var(--navy);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.user p {
+            background: var(--gold);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-reply {
+            padding: 10px 18px;
+            background: white;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-reply:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #E0E0E0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid #E0E0E0;
+            border-radius: 25px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: var(--gold);
+        }
+
+        .chat-send {
+            width: 45px;
+            height: 45px;
+            background: var(--gold);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-send:hover {
+            background: var(--dark-gold);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 80px 60px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-heading {
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+        }
+
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 25px;
+            }
+
+            section {
+                padding: 80px 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .hero-stats {
+                gap: 40px;
+            }
+
+            .chat-widget {
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .features-grid,
+            .specs-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Villa Azur & Or</a>
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#villa">La Villa</a></li>
+            <li><a href="#specifications">Détails</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="tel:+590690977378" class="nav-cta">Réserver</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section class="hero" id="accueil">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-resort-by-the-sea-2615-large.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Fallback Background -->
+        <div class="hero-bg"></div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="hero-subtitle">Saint-François, Guadeloupe</div>
+            <h1 class="hero-title">Villa Azur & Or</h1>
+            <p class="hero-description">
+                L'excellence caribéenne à l'état pur. Villa d'exception face à la mer des Caraïbes. 
+                Piscine à débordement, services haut de gamme, et l'art de vivre réinventé.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Chambres</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8-10</span>
+                    <span class="stat-label">Personnes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">300m²</span>
+                    <span class="stat-label">Surface</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">180°</span>
+                    <span class="stat-label">Vue Mer</span>
+                </div>
+            </div>
+
+            <a href="https://wa.me/590690977378" class="cta-button">Réserver Maintenant</a>
+        </div>
+
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="villa">
+        <div class="section-header">
+            <div class="section-label">Services Premium</div>
+            <h2 class="section-title">Une Expérience d'Exception</h2>
+            <p class="section-subtitle">
+                Chaque détail de Villa Azur & Or a été pensé pour vous offrir un séjour inoubliable. 
+                Du lever du soleil sur la mer turquoise au coucher sur l'horizon infini.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 16C9.85 16.63 10.885 17 12 17C13.115 17 14.15 16.63 15 16M12 2L2 7L12 12L22 7L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 12C22 13.657 20.657 15 19 15C17.343 15 16 13.657 16 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="feature-title">Piscine à Débordement</h3>
+                <p class="feature-description">Vue imprenable sur la mer des Caraïbes, eau chauffée, éclairage LED nocturne et système de nage à contre-courant.</p>
+            </div>
+
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C10.3431 2 9 3.34315 9 5V8C9 9.65685 10.3431 11 12 11C13.6569 11 15 9.65685 15 8V5C15 3.34315 13.6569 2 12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 11V14M8 14H16M8 14C6.89543 14 6 14.8954 6 16V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V16C18 14.8954 17.1046 14 16 14M8 22H16" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="feature-title">Chef Privé</h3>
+                <p class="feature-description">Cuisine gastronomique créole et française, service à la demande et menu personnalisé selon vos envies.</p>
+            </div>
+
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="feature-title">Conciergerie 24/7</h3>
+                <p class="feature-description">Majordome dédié, excursions privées, réservations restaurants, et services sur-mesure.</p>
+            </div>
+
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3L2 12H5V20H10V14H14V20H19V12H22L12 3Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="feature-title">Jardin Tropical</h3>
+                <p class="feature-description">3000m² de végétation luxuriante, accès privé à la plage, et terrasses aménagées.</p>
+            </div>
+
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="7" width="20" height="15" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 2L12 7L7 2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="feature-title">Salle Cinéma</h3>
+                <p class="feature-description">Écran 4K 100 pouces, son Dolby Atmos, sièges premium et bibliothèque de films.</p>
+            </div>
+
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2V4M12 20V22M4 12H2M22 12H20M19.07 4.93L17.66 6.34M6.34 17.66L4.93 19.07M19.07 19.07L17.66 17.66M6.34 6.34L4.93 4.93" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="feature-title">Spa Privé</h3>
+                <p class="feature-description">Jacuzzi, sauna finlandais, hammam et massages sur rendez-vous par thérapeutes certifiés.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications Section -->
+    <section class="specs-section" id="specifications">
+        <div class="section-header">
+            <div class="section-label">Caractéristiques</div>
+            <h2 class="section-title">Fiche Technique</h2>
+            <p class="section-subtitle">Tous les détails de cette villa d'exception</p>
+        </div>
+        
+        <div class="specs-grid">
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 22V12H15V22" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Chambres</div>
+                    <div class="spec-value">4 chambres doubles de luxe</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 2V6M15 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Salles de bains</div>
+                    <div class="spec-value">4 salles de bains privatives</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M2 12H6L9 3L15 21L18 12H22" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Piscine</div>
+                    <div class="spec-value">Piscine privée chauffée 15x5m</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M23 21V19C23 18.0 22.5 17 21.5 16.5M16 3.13C17 3.5 18 4.5 18 6C18 7.5 17 8.5 16 8.87" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Capacité</div>
+                    <div class="spec-value">8 à 10 personnes maximum</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Climatisation</div>
+                    <div class="spec-value">Réversible toutes les pièces</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12.55C5 12.55 9 7 12 7C15 7 19 12.55 19 12.55" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 15.5C8 15.5 10 12.5 12 12.5C14 12.5 16 15.5 16 15.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="18" r="1" fill="currentColor"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Internet</div>
+                    <div class="spec-value">Wi-Fi fibre optique 1Gb/s</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Cuisine</div>
+                    <div class="spec-value">Équipée haut de gamme Gaggenau</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 12H16M12 8V16" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Barbecue</div>
+                    <div class="spec-value">Grill Weber professionnel + plancha</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Parking</div>
+                    <div class="spec-value">3 places privées sécurisées</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 3V21M21 9H3M21 15H3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Surface</div>
+                    <div class="spec-value">300m² habitables + terrasses</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Jardin</div>
+                    <div class="spec-value">3000m² paysager avec palmiers</div>
+                </div>
+            </div>
+
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M2 12H6L9 3L15 21L18 12H22" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Plage</div>
+                    <div class="spec-value">Accès privé direct 50 mètres</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="galerie">
+        <div class="section-header">
+            <div class="section-label">Portfolio</div>
+            <h2 class="section-title">Galerie Photo</h2>
+            <p class="section-subtitle">
+                Découvrez l'élégance et le raffinement de Villa Azur & Or à travers notre sélection de photos
+            </p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop" alt="Piscine à débordement vue mer" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Piscine à Débordement</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop" alt="Terrasse avec vue panoramique" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Terrasse Vue Mer</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop" alt="Chambre master suite luxe" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Chambre Master Suite</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" alt="Salon principal" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Salon Principal</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&h=600&fit=crop" alt="Jardin tropical luxuriant" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Jardin Tropical</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop" alt="Pool lounge avec transats" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Pool Lounge</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop" alt="Chambre avec vue mer" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Chambre Vue Mer</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800&h=600&fit=crop" alt="Cuisine équipée moderne" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Cuisine Équipée</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop" alt="Salle de bain luxe" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Salle de Bain Suite</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Villa Azur & Or</h3>
+                <p>L'excellence caribéenne à l'état pur. Vivez une expérience unique à Saint-François, Guadeloupe.</p>
+                <p style="color: var(--gold); margin-top: 20px;">📱 +590 690 97 73 78</p>
+                <p style="color: var(--gold);">📧 gwadabelofficiel@gmail.com</p>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#villa">La Villa</a></li>
+                    <li><a href="#specifications">Détails</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">Informations</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">CGV</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">Contact</h4>
+                <ul class="footer-contact">
+                    <li>📍 Saint-François, Guadeloupe</li>
+                    <li><a href="mailto:gwadabelofficiel@gmail.com">Email : gwadabelofficiel@gmail.com</a></li>
+                    <li><a href="tel:+590690977378">Tel : +590 690 97 73 78</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Villa Azur & Or - Gwada Bel. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/590690977378?text=Bonjour,%20je%20suis%20intéressé%20par%20Villa%20Azur%20%26%20Or" class="whatsapp-button" target="_blank" title="Contactez-nous sur WhatsApp">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- Chat Trigger Button -->
+    <button class="chat-trigger" id="chatTrigger">
+        <svg class="chat-trigger-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="chat-avatar">VA</div>
+            <div class="chat-info">
+                <h4>Villa Azur & Or</h4>
+                <p class="chat-status">En ligne</p>
+            </div>
+            <button class="chat-close" id="chatClose">×</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <p>Bonjour ! 👋 Bienvenue à Villa Azur & Or. Comment puis-je vous aider ?</p>
+            </div>
+            <div class="chat-quick-replies" id="quickReplies">
+                <button class="quick-reply" data-message="Disponibilités">📅 Vérifier disponibilités</button>
+                <button class="quick-reply" data-message="Tarifs">💰 Demander les tarifs</button>
+                <button class="quick-reply" data-message="Services">🛎️ Services inclus</button>
+                <button class="quick-reply" data-message="Contact">📞 Parler à un conseiller</button>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Écrivez votre message...">
+            <button class="chat-send" id="chatSend">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Chat functionality
+        const chatTrigger = document.getElementById('chatTrigger');
+        const chatWidget = document.getElementById('chatWidget');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Open chat
+        chatTrigger.addEventListener('click', () => {
+            chatWidget.classList.add('active');
+            chatTrigger.style.display = 'none';
+            chatInput.focus();
+        });
+
+        // Close chat
+        chatClose.addEventListener('click', () => {
+            chatWidget.classList.remove('active');
+            chatTrigger.style.display = 'flex';
+        });
+
+        // Quick replies
+        document.querySelectorAll('.quick-reply').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const message = e.target.dataset.message;
+                addUserMessage(message);
+                setTimeout(() => respondToQuickReply(message), 800);
+                e.target.parentElement.style.display = 'none';
+            });
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            
+            addUserMessage(message);
+            chatInput.value = '';
+            
+            setTimeout(() => {
+                addBotMessage("Merci pour votre message ! Un de nos conseillers va vous répondre dans quelques instants. Pour une réponse immédiate, vous pouvez aussi nous contacter au +590 690 97 73 78 ou via WhatsApp. 😊");
+            }, 1000);
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message user';
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message bot';
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function respondToQuickReply(type) {
+            let response = '';
+            switch(type) {
+                case 'Disponibilités':
+                    response = "Pour vérifier nos disponibilités en temps réel, je vous invite à nous contacter directement :<br><br>📞 Téléphone : +590 690 97 73 78<br>💬 WhatsApp : Cliquez sur le bouton vert en bas à droite<br>📧 Email : gwadabelofficiel@gmail.com<br><br>Nous vous répondrons dans l'heure ! 😊";
+                    break;
+                case 'Tarifs':
+                    response = "Nos tarifs varient selon la saison :<br><br>🌴 Basse saison (mai-nov) : À partir de 650€/nuit<br>☀️ Haute saison (déc-avril) : À partir de 850€/nuit<br>🎄 Période fêtes : Nous consulter<br><br>Inclus : Ménage, linge, WiFi, piscine chauffée<br><br>Souhaitez-vous un devis personnalisé ?";
+                    break;
+                case 'Services':
+                    response = "Services inclus :<br>✅ Piscine chauffée<br>✅ WiFi fibre<br>✅ Linge de maison<br>✅ Ménage fin de séjour<br><br>Services sur demande :<br>⭐ Chef privé<br>⭐ Majordome<br>⭐ Spa & massages<br>⭐ Excursions privées<br><br>Besoin de plus d'infos ?";
+                    break;
+                case 'Contact':
+                    response = "Parfait ! Voici comment nous joindre :<br><br>📞 Téléphone : +590 690 97 73 78<br>💬 WhatsApp : Clic sur le bouton vert<br>📧 Email : gwadabelofficiel@gmail.com<br><br>Nous sommes disponibles 7j/7 de 8h à 20h. À tout de suite ! 😊";
+                    break;
+                default:
+                    response = "Merci ! Comment puis-je vous aider ?";
+            }
+            addBotMessage(response);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
