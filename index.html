@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Villa Azur &amp; Or - Gwada Bel - Saint-François, Guadeloupe</title>
+    <title>Villa Azur & Or - Location de Luxe en Guadeloupe | Gwada Bel</title>
+    <meta name="description" content="Villa de prestige avec piscine à débordement, vue mer panoramique, et services haut de gamme. Location saisonnière luxe à Saint-François, Guadeloupe.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -11,10 +18,25 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --gold: #C9A961;
+            --dark-gold: #B8935A;
+            --navy: #0A1931;
+            --light-navy: #1E3A5F;
+            --cream: #F4E4C1;
+            --white: #FFFFFF;
+            --gray: #666666;
+            
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
         body {
-            font-family: 'Georgia', serif;
+            font-family: var(--font-body);
+            color: var(--navy);
             overflow-x: hidden;
-            background: #0A1931;
+            background: var(--white);
+            line-height: 1.6;
         }
 
         /* Navigation */
@@ -23,48 +45,50 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 30px 50px;
+            padding: 30px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             background: transparent;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav.scrolled {
-            background: rgba(10, 25, 49, 0.98);
-            padding: 15px 50px;
+            background: rgba(10, 25, 49, 0.95);
             backdrop-filter: blur(20px);
+            padding: 20px 60px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
-            font-size: 26px;
-            background: linear-gradient(135deg, #D4AF37, #F4E4C1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 3px;
-            font-weight: 300;
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .logo:hover {
-            letter-spacing: 5px;
+            letter-spacing: 4px;
+            color: var(--cream);
         }
 
         .nav-links {
             display: flex;
-            gap: 45px;
+            gap: 50px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 2px;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
             position: relative;
@@ -74,15 +98,12 @@
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
-            height: 1px;
-            background: #D4AF37;
+            height: 2px;
+            background: var(--gold);
             transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #D4AF37;
         }
 
         .nav-links a:hover::after {
@@ -90,15 +111,16 @@
         }
 
         .nav-cta {
-            padding: 14px 35px;
+            padding: 14px 32px;
             background: transparent;
-            border: 1.5px solid #D4AF37;
-            color: #D4AF37;
+            border: 2px solid var(--gold);
+            color: var(--gold);
             text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 2px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
@@ -110,7 +132,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: #D4AF37;
+            background: var(--gold);
             transition: left 0.4s ease;
             z-index: -1;
         }
@@ -120,12 +142,11 @@
         }
 
         .nav-cta:hover {
-            color: #0A1931;
-            border-color: #D4AF37;
-            transform: translateY(-2px);
+            color: var(--navy);
+            border-color: var(--gold);
         }
 
-        /* Hero Section */
+        /* Hero Section with Video */
         .hero {
             position: relative;
             height: 100vh;
@@ -135,7 +156,20 @@
             overflow: hidden;
         }
 
-        /* Animated background simulating water/waves */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+
+        /* Fallback gradient if video doesn't load */
         .hero-bg {
             position: absolute;
             top: 0;
@@ -147,52 +181,7 @@
                 #1E3A5F 30%,
                 #2A5F7F 60%, 
                 #3A7FA0 100%);
-            animation: waveMove 15s ease-in-out infinite;
-        }
-
-        @keyframes waveMove {
-            0%, 100% {
-                background-position: 0% 50%;
-                background-size: 200% 200%;
-            }
-            50% {
-                background-position: 100% 50%;
-                background-size: 250% 250%;
-            }
-        }
-
-        /* Floating particles effect */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
+            z-index: 0;
         }
 
         .hero-overlay {
@@ -202,9 +191,9 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to bottom, 
-                rgba(10, 25, 49, 0.8) 0%, 
-                rgba(10, 25, 49, 0.2) 40%,
-                rgba(10, 25, 49, 0.5) 100%);
+                rgba(10, 25, 49, 0.7) 0%, 
+                rgba(10, 25, 49, 0.4) 40%,
+                rgba(10, 25, 49, 0.6) 100%);
             z-index: 1;
         }
 
@@ -213,14 +202,16 @@
             z-index: 2;
             text-align: center;
             color: white;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 0.3s;
+            max-width: 1000px;
+            padding: 0 40px;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -228,15 +219,15 @@
         }
 
         .hero-subtitle {
-            font-size: 13px;
-            letter-spacing: 5px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #C9A961;
+            color: var(--gold);
             margin-bottom: 25px;
-            font-weight: 300;
+            font-weight: 400;
             opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-            animation-delay: 0.8s;
+            animation: fadeIn 1.5s 0.3s forwards;
         }
 
         @keyframes fadeIn {
@@ -244,328 +235,267 @@
         }
 
         .hero-title {
-            font-size: 82px;
-            font-weight: 200;
-            letter-spacing: 4px;
-            margin-bottom: 25px;
-            background: linear-gradient(135deg, #F4E4C1 0%, #D4AF37 50%, #C9A961 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% 200%;
-            animation: shimmer 4s ease-in-out infinite, titleFloat 3s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-        }
-
-        @keyframes shimmer {
-            0%, 100% { 
-                background-position: 0% 50%;
-                filter: brightness(1);
-            }
-            50% { 
-                background-position: 100% 50%;
-                filter: brightness(1.4);
-            }
-        }
-
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            font-family: var(--font-display);
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: fadeIn 1.5s 0.6s forwards;
         }
 
         .hero-description {
-            font-size: 21px;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 300;
-            line-height: 1.9;
-            max-width: 750px;
-            margin: 0 auto 50px;
-            color: rgba(248, 246, 241, 0.95);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
             opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-            animation-delay: 1.2s;
+            animation: fadeIn 1.5s 0.9s forwards;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            margin-bottom: 60px;
+            gap: 60px;
+            margin-bottom: 50px;
             flex-wrap: wrap;
             opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-            animation-delay: 1.6s;
+            animation: fadeIn 1.5s 1.2s forwards;
         }
 
         .stat {
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .stat:hover {
-            transform: translateY(-5px);
         }
 
         .stat-number {
-            font-size: 42px;
-            background: linear-gradient(135deg, #D4AF37, #F4E4C1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 200;
             display: block;
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--gold);
             margin-bottom: 8px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
         }
 
         .stat-label {
-            font-size: 11px;
-            letter-spacing: 3px;
+            font-size: 13px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: #C9A961;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 20px 55px;
-            background: linear-gradient(135deg, #D4AF37 0%, #C9A961 100%);
-            color: #0A1931;
+            padding: 18px 45px;
+            background: var(--gold);
+            color: var(--navy);
             text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-size: 14px;
             font-weight: 600;
-            border-radius: 2px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: 2px solid var(--gold);
             opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-            animation-delay: 2s;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .cta-button:hover::before {
-            width: 300px;
-            height: 300px;
+            animation: fadeIn 1.5s 1.5s forwards;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 60px rgba(212, 175, 55, 0.5);
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
         }
 
         .scroll-indicator {
             position: absolute;
-            bottom: 50px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            animation: bounce 2.5s ease-in-out infinite;
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(201, 169, 97, 0.5);
+            border-radius: 20px;
             z-index: 2;
+            opacity: 0;
+            animation: fadeIn 1.5s 1.8s forwards;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(15px); }
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: scroll 2s infinite;
         }
 
-        .scroll-indicator::after {
-            content: '⌄';
-            display: block;
-            font-size: 32px;
-            color: #C9A961;
-            font-weight: 100;
+        @keyframes scroll {
+            0% { top: 10px; opacity: 1; }
+            50% { top: 20px; opacity: 0.5; }
+            100% { top: 10px; opacity: 1; }
         }
 
-        /* Section Villa */
-        .villa-section {
-            padding: 120px 50px;
-            background: linear-gradient(180deg, #0A1931 0%, #1E3A5F 100%);
-            color: white;
+        /* Section Styling */
+        section {
+            padding: 120px 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .section-title {
-            font-size: 52px;
-            text-align: center;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #D4AF37, #F4E4C1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 200;
-            letter-spacing: 3px;
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 25px;
+            line-height: 1.2;
         }
 
         .section-subtitle {
-            text-align: center;
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 700px;
-            margin: 0 auto 80px;
             line-height: 1.8;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: #F8F9FA;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 4px;
+            padding: 50px 40px;
+            background: white;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(212, 175, 55, 0.5);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
         .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: block;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 30px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
         }
 
         .feature-title {
-            font-size: 18px;
-            color: #D4AF37;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 14px;
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 15px;
         }
 
         .feature-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 48px;
-            }
-            
-            .hero-description {
-                font-size: 16px;
-            }
-            
-            .hero-stats {
-                gap: 25px;
-            }
-            
-            .stat-number {
-                font-size: 32px;
-            }
-            
-            nav {
-                padding: 20px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .section-title {
-                font-size: 36px;
-            }
-
-            .villa-section {
-                padding: 80px 20px;
-            }
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray);
+            font-weight: 300;
         }
 
         /* Specifications Section */
         .specs-section {
-            padding: 100px 50px;
-            background: linear-gradient(135deg, #0A1931 0%, #1E3A5F 100%);
-            position: relative;
+            background: var(--navy);
+            color: white;
         }
 
-        .specs-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 60px;
-            backdrop-filter: blur(10px);
+        .specs-section .section-title {
+            color: white;
         }
 
-        .specs-title {
-            text-align: center;
-            font-size: 42px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #D4AF37, #F4E4C1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
+        .specs-section .section-label {
+            color: var(--gold);
         }
 
-        .specs-subtitle {
-            text-align: center;
+        .specs-section .section-subtitle {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 16px;
-            margin-bottom: 50px;
-            letter-spacing: 1px;
         }
 
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .spec-item {
             display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            align-items: flex-start;
+            gap: 25px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.4s ease;
         }
 
         .spec-item:hover {
-            background: rgba(212, 175, 55, 0.05);
-            border-color: rgba(212, 175, 55, 0.3);
-            transform: translateY(-3px);
+            background: rgba(201, 169, 97, 0.05);
+            border-color: var(--gold);
+            transform: translateX(5px);
         }
 
-        .spec-icon {
-            font-size: 32px;
-            min-width: 50px;
-            text-align: center;
+        .spec-icon-svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            flex-shrink: 0;
         }
 
         .spec-content {
@@ -573,58 +503,29 @@
         }
 
         .spec-label {
-            color: #D4AF37;
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 5px;
-            font-weight: 300;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 500;
         }
 
         .spec-value {
-            color: white;
             font-size: 18px;
-            font-weight: 300;
-            letter-spacing: 0.5px;
+            color: white;
+            font-weight: 400;
         }
 
         /* Gallery Section */
         .gallery-section {
-            padding: 120px 50px;
-            background: #0A1931;
-        }
-
-        .gallery-filters {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 12px 30px;
-            background: transparent;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: #D4AF37;
-            color: #D4AF37;
+            background: white;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -632,714 +533,342 @@
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            aspect-ratio: 4/3;
             cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .gallery-item:nth-child(3n + 1) {
-            grid-row: span 2;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-            z-index: 2;
         }
 
         .gallery-image {
             width: 100%;
             height: 100%;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all 0.4s ease;
+            object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
-        .image-overlay {
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 25, 49, 0.7);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(to bottom, 
+                transparent 0%,
+                rgba(10, 25, 49, 0.9) 100%);
             opacity: 0;
             transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
         }
 
-        .gallery-item:hover .image-overlay {
+        .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
 
-        .view-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
+        .gallery-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            color: white;
+            font-weight: 600;
         }
 
-        .image-title {
-            color: #D4AF37;
-            font-size: 16px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
+        /* Contact/WhatsApp Button */
+        .whatsapp-button {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
-        .lightbox.active {
+        .whatsapp-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* Chat Widget */
+        .chat-trigger {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: none;
             display: flex;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 48px;
-            color: #D4AF37;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
             cursor: pointer;
+            z-index: 999;
             transition: all 0.3s ease;
         }
 
-        .lightbox-close:hover {
-            color: #F4E4C1;
-            transform: rotate(90deg);
+        .chat-trigger:hover {
+            transform: scale(1.1);
+            background: var(--dark-gold);
         }
 
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 80%;
+        .chat-trigger-icon {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .chat-widget {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-widget.active {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            animation: slideInUp 0.4s ease;
         }
 
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 80vh;
-            background: linear-gradient(135deg, #2A5F7F, #3A7FA0);
-            border-radius: 8px;
-            padding: 200px;
-            animation: zoomIn 0.4s ease;
-        }
-
-        @keyframes zoomIn {
+        @keyframes slideInUp {
             from {
-                transform: scale(0.8);
                 opacity: 0;
+                transform: translateY(30px);
             }
             to {
-                transform: scale(1);
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid #D4AF37;
-            color: #D4AF37;
-            font-size: 48px;
-            padding: 20px 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-
-        .lightbox-nav:hover {
-            background: rgba(212, 175, 55, 0.4);
-        }
-
-        .lightbox-prev {
-            left: 30px;
-        }
-
-        .lightbox-next {
-            right: 30px;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 30px;
-            color: #D4AF37;
-            font-size: 18px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Location Section */
-        .location-section {
-            padding: 120px 50px;
-            background: linear-gradient(180deg, #0A1931 0%, #1E3A5F 100%);
-            color: white;
-        }
-
-        .location-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 60px;
-            max-width: 1400px;
-            margin: 60px auto 0;
-        }
-
-        .map-container {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .nearby-places {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .nearby-title {
-            font-size: 24px;
-            color: #D4AF37;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 300;
-        }
-
-        .place-item {
+        .chat-header {
+            background: var(--navy);
+            padding: 25px;
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s ease;
+            gap: 15px;
         }
 
-        .place-item:last-child {
-            border-bottom: none;
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--navy);
         }
 
-        .place-item:hover {
-            transform: translateX(10px);
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-
-        .place-icon {
-            font-size: 32px;
-            min-width: 50px;
-            text-align: center;
-        }
-
-        .place-info {
+        .chat-info {
             flex: 1;
         }
 
-        .place-name {
-            font-size: 16px;
-            color: white;
-            margin-bottom: 5px;
-            font-weight: 300;
-        }
-
-        .place-distance {
-            font-size: 13px;
-            color: #C9A961;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 968px) {
-            .location-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .gallery-section {
-                padding: 80px 20px;
-            }
-
-            .location-section {
-                padding: 80px 20px;
-            }
-
-            .nearby-places {
-                padding: 30px 20px;
-            }
-        }
-
-        /* Custom Map */
-        .custom-map {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, #1E3A5F, #2A5F7F);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-marker {
-            font-size: 64px;
-            animation: markerBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes markerBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .map-info {
-            color: #D4AF37;
-            font-size: 24px;
-            letter-spacing: 2px;
-            margin-top: 20px;
-        }
-
-        /* Reservation Section */
-        .reservation-section {
-            padding: 120px 50px;
-            background: #0A1931;
-        }
-
-        .reservation-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            max-width: 1400px;
-            margin: 60px auto 0;
-        }
-
-        .calendar-container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .calendar-title {
-            font-size: 20px;
-            color: #D4AF37;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 300;
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .calendar-nav {
-            background: transparent;
-            border: 1px solid #D4AF37;
-            color: #D4AF37;
-            font-size: 24px;
-            padding: 8px 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .calendar-nav:hover {
-            background: rgba(212, 175, 55, 0.2);
-        }
-
-        .calendar-month {
-            color: white;
+        .chat-info h4 {
+            font-family: var(--font-display);
             font-size: 18px;
-            letter-spacing: 2px;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
             color: white;
-            font-size: 14px;
-            border: 1px solid transparent;
+            margin-bottom: 4px;
         }
 
-        .calendar-day.header {
-            color: #C9A961;
-            font-weight: 600;
-            cursor: default;
-            font-size: 12px;
-        }
-
-        .calendar-day.available:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: #D4AF37;
-        }
-
-        .calendar-day.selected {
-            background: #D4AF37;
-            color: #0A1931;
-            font-weight: 600;
-        }
-
-        .calendar-day.booked {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.3);
-            cursor: not-allowed;
-        }
-
-        .calendar-day.other-month {
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        .calendar-legend {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .chat-status {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .legend-color.available {
-            background: transparent;
-        }
-
-        .legend-color.selected {
-            background: #D4AF37;
-        }
-
-        .legend-color.booked {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .booking-form {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .price-summary {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 30px;
-            border-radius: 8px;
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            color: white;
-            font-size: 15px;
-        }
-
-        .price-row.total {
-            font-size: 20px;
-            font-weight: 600;
-            color: #D4AF37;
-            margin-bottom: 0;
-        }
-
-        .price-divider {
-            height: 1px;
-            background: rgba(212, 175, 55, 0.3);
-            margin: 20px 0;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #C9A961;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: white;
-            padding: 15px;
-            border-radius: 4px;
-            font-size: 15px;
-            font-family: 'Georgia', serif;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #D4AF37;
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #D4AF37, #C9A961);
-            color: #0A1931;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 120px 50px;
-            background: linear-gradient(180deg, #0A1931 0%, #1E3A5F 100%);
-        }
-
-        .testimonials-carousel {
-            position: relative;
-            max-width: 900px;
-            margin: 60px auto 40px;
-            padding: 0 60px;
-        }
-
-        .testimonials-track {
-            display: flex;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .testimonial-card {
-            min-width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 50px;
-            border-radius: 8px;
-            text-align: center;
-            flex-shrink: 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .stars {
-            color: #D4AF37;
-            font-size: 24px;
-            margin-bottom: 30px;
-            letter-spacing: 5px;
-        }
-
-        .testimonial-text {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
+            color: var(--gold);
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
+            gap: 6px;
         }
 
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #D4AF37, #C9A961);
+        .chat-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #25D366;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0A1931;
-            font-weight: 600;
-            font-size: 18px;
         }
 
-        .author-info {
-            text-align: left;
-        }
-
-        .author-name {
+        .chat-close {
+            width: 35px;
+            height: 35px;
+            background: transparent;
+            border: none;
             color: white;
-            font-size: 16px;
-            margin-bottom: 5px;
-            font-weight: 300;
+            font-size: 28px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        .author-location {
-            color: #C9A961;
-            font-size: 13px;
+        .chat-close:hover {
+            transform: rotate(90deg);
         }
 
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid #D4AF37;
-            color: #D4AF37;
-            font-size: 32px;
+        .chat-messages {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background: #F8F9FA;
+        }
+
+        .chat-message {
+            margin-bottom: 20px;
+            max-width: 80%;
+        }
+
+        .chat-message.bot {
+            align-self: flex-start;
+        }
+
+        .chat-message.user {
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .chat-message p {
             padding: 15px 20px;
+            border-radius: 15px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .chat-message.bot p {
+            background: white;
+            color: var(--navy);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.user p {
+            background: var(--gold);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-reply {
+            padding: 10px 18px;
+            background: white;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--gold);
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 4px;
-            z-index: 2;
         }
 
-        .carousel-nav:hover {
-            background: rgba(212, 175, 55, 0.4);
+        .quick-reply:hover {
+            background: var(--gold);
+            color: white;
         }
 
-        .carousel-prev {
-            left: 0;
-        }
-
-        .carousel-next {
-            right: 0;
-        }
-
-        .carousel-dots {
+        .chat-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #E0E0E0;
             display: flex;
-            justify-content: center;
             gap: 15px;
         }
 
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .chat-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid #E0E0E0;
+            border-radius: 25px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s ease;
         }
 
-        .carousel-dot.active {
-            background: #D4AF37;
-            transform: scale(1.3);
+        .chat-input:focus {
+            border-color: var(--gold);
+        }
+
+        .chat-send {
+            width: 45px;
+            height: 45px;
+            background: var(--gold);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-send:hover {
+            background: var(--dark-gold);
+            transform: scale(1.05);
         }
 
         /* Footer */
-        .footer {
-            background: #0A1931;
-            color: rgba(255, 255, 255, 0.7);
-            padding: 80px 50px 30px;
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 80px 60px 40px;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 60px;
             max-width: 1400px;
-            margin: 0 auto 50px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
         }
 
-        .footer-logo {
-            background: linear-gradient(135deg, #D4AF37, #F4E4C1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 24px;
-            letter-spacing: 2px;
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            color: var(--gold);
             margin-bottom: 20px;
-            font-weight: 300;
         }
 
-        .footer-description {
-            font-size: 14px;
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.8;
             margin-bottom: 25px;
         }
 
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: #D4AF37;
-            transform: translateY(-3px);
-        }
-
         .footer-heading {
-            color: #D4AF37;
-            font-size: 16px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            font-weight: 300;
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .footer-links {
@@ -1353,13 +882,11 @@
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #D4AF37;
-            padding-left: 5px;
+            color: var(--gold);
         }
 
         .footer-contact {
@@ -1367,318 +894,82 @@
         }
 
         .footer-contact li {
-            font-size: 14px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+        }
+
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--gold);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            font-size: 13px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
         }
 
+        /* Responsive */
         @media (max-width: 968px) {
-            .reservation-container {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 25px;
+            }
+
+            section {
+                padding: 80px 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .hero-stats {
+                gap: 40px;
+            }
+
+            .chat-widget {
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .features-grid,
+            .specs-grid,
+            .gallery-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .reservation-section {
-                padding: 80px 20px;
-            }
-
-            .testimonials-section {
-                padding: 80px 20px;
-            }
-
-            .testimonials-carousel {
-                padding: 0 20px;
-            }
-
-            .testimonial-card {
-                padding: 30px 20px;
-            }
-
-            .carousel-nav {
-                font-size: 24px;
-                padding: 10px 15px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
 
-            .footer {
-                padding: 60px 20px 30px;
-            }
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            z-index: 999;
-            animation: pulse-whatsapp 2s infinite;
-        }
-
-        @keyframes pulse-whatsapp {
-            0%, 100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
-            }
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-icon {
-            font-size: 32px;
-        }
-
-        /* Chat Widget */
-        .chat-trigger {
-            position: fixed;
-            bottom: 110px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #D4AF37, #C9A961);
-            border: none;
-            border-radius: 50%;
-            font-size: 28px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-            transition: all 0.3s ease;
-            z-index: 998;
-        }
-
-        .chat-trigger:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.6);
-        }
-
-        .chat-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #FF4444;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
-            animation: pulse-badge 1.5s infinite;
-        }
-
-        @keyframes pulse-badge {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-
-        .chat-widget {
-            position: fixed;
-            bottom: 180px;
-            right: 30px;
-            width: 350px;
-            background: rgba(10, 25, 49, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            display: none;
-            flex-direction: column;
-            z-index: 997;
-            animation: slideInChat 0.3s ease;
-        }
-
-        @keyframes slideInChat {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .chat-widget.active {
-            display: flex;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, #D4AF37, #C9A961);
-            color: #0A1931;
-            padding: 20px;
-            border-radius: 12px 12px 0 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .chat-avatar {
-            width: 45px;
-            height: 45px;
-            background: #0A1931;
-            color: #D4AF37;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .chat-info {
-            flex: 1;
-        }
-
-        .chat-info h4 {
-            margin: 0 0 3px 0;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .chat-status {
-            margin: 0;
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .chat-close {
-            background: none;
-            border: none;
-            color: #0A1931;
-            font-size: 28px;
-            cursor: pointer;
-            padding: 0;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .chat-close:hover {
-            transform: rotate(90deg);
-        }
-
-        .chat-messages {
-            padding: 20px;
-            height: 300px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .chat-message {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .chat-message.bot {
-            background: rgba(212, 175, 55, 0.2);
-            color: white;
-            align-self: flex-start;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .chat-message.user {
-            background: #D4AF37;
-            color: #0A1931;
-            align-self: flex-end;
-        }
-
-        .chat-input-container {
-            display: flex;
-            padding: 15px;
-            gap: 10px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .chat-input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: white;
-            padding: 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-family: 'Georgia', serif;
-        }
-
-        .chat-input:focus {
-            outline: none;
-            border-color: #D4AF37;
-        }
-
-        .chat-send {
-            background: #D4AF37;
-            border: none;
-            color: #0A1931;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .chat-send:hover {
-            transform: scale(1.1);
-        }
-
-        @media (max-width: 768px) {
-            .whatsapp-button, .chat-trigger {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-            }
-
-            .chat-trigger {
-                bottom: 90px;
-            }
-
-            .chat-widget {
-                width: calc(100% - 40px);
-                right: 20px;
-                bottom: 160px;
+            .hero-stats {
+                flex-direction: column;
+                gap: 25px;
             }
         }
     </style>
@@ -1686,38 +977,44 @@
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="logo">Villa Azur &amp; Or - Gwada Bel</div>
+        <a href="#" class="logo">Villa Azur & Or</a>
         <ul class="nav-links">
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#villa">La Villa</a></li>
+            <li><a href="#specifications">Détails</a></li>
             <li><a href="#galerie">Galerie</a></li>
-            <li><a href="#reservation">Réservation</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="tel:+590690977378" class="nav-cta">Réserver</a></li>
         </ul>
-        <a href="#reservation" class="nav-cta">Vérifier disponibilités</a>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Video -->
     <section class="hero" id="accueil">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-resort-by-the-sea-2615-large.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Fallback Background -->
         <div class="hero-bg"></div>
-        <div class="particles" id="particles"></div>
+        
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
             <div class="hero-subtitle">Saint-François, Guadeloupe</div>
-            <h1 class="hero-title">Villa Azur &amp; Or - Gwada Bel</h1>
+            <h1 class="hero-title">Villa Azur & Or</h1>
             <p class="hero-description">
                 L'excellence caribéenne à l'état pur. Villa d'exception face à la mer des Caraïbes. 
-                Piscine à débordement, majordome privé, et l'art de vivre réinventé.
+                Piscine à débordement, services haut de gamme, et l'art de vivre réinventé.
             </p>
             
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-number">5</span>
+                    <span class="stat-number">4</span>
                     <span class="stat-label">Chambres</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number">10</span>
+                    <span class="stat-number">8-10</span>
                     <span class="stat-label">Personnes</span>
                 </div>
                 <div class="stat">
@@ -1730,160 +1027,217 @@
                 </div>
             </div>
 
-            <a href="#reservation" class="cta-button">Réserver maintenant</a>
+            <a href="https://wa.me/590690977378" class="cta-button">Réserver Maintenant</a>
         </div>
 
         <div class="scroll-indicator"></div>
     </section>
 
-    <!-- Villa Section -->
-    <section class="villa-section" id="villa">
-        <h2 class="section-title">Une Expérience d'Exception</h2>
-        <p class="section-subtitle">
-            Chaque détail de Villa Azur &amp; Or - Gwada Bel a été pensé pour vous offrir un séjour inoubliable. 
-            Du lever du soleil sur la mer turquoise au coucher sur l'horizon infini.
-        </p>
+    <!-- Features Section -->
+    <section class="features-section" id="villa">
+        <div class="section-header">
+            <div class="section-label">Services Premium</div>
+            <h2 class="section-title">Une Expérience d'Exception</h2>
+            <p class="section-subtitle">
+                Chaque détail de Villa Azur & Or a été pensé pour vous offrir un séjour inoubliable. 
+                Du lever du soleil sur la mer turquoise au coucher sur l'horizon infini.
+            </p>
+        </div>
 
         <div class="features-grid">
             <div class="feature-card">
-                <span class="feature-icon">🏊</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 16C9.85 16.63 10.885 17 12 17C13.115 17 14.15 16.63 15 16M12 2L2 7L12 12L22 7L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 12C22 13.657 20.657 15 19 15C17.343 15 16 13.657 16 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h3 class="feature-title">Piscine à Débordement</h3>
-                <p class="feature-description">Vue imprenable sur la mer des Caraïbes, eau chauffée, éclairage nocturne LED</p>
+                <p class="feature-description">Vue imprenable sur la mer des Caraïbes, eau chauffée, éclairage LED nocturne et système de nage à contre-courant.</p>
             </div>
 
             <div class="feature-card">
-                <span class="feature-icon">👨‍🍳</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C10.3431 2 9 3.34315 9 5V8C9 9.65685 10.3431 11 12 11C13.6569 11 15 9.65685 15 8V5C15 3.34315 13.6569 2 12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 11V14M8 14H16M8 14C6.89543 14 6 14.8954 6 16V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V16C18 14.8954 17.1046 14 16 14M8 22H16" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h3 class="feature-title">Chef Privé</h3>
-                <p class="feature-description">Cuisine gastronomique créole et française, service à la demande</p>
+                <p class="feature-description">Cuisine gastronomique créole et française, service à la demande et menu personnalisé selon vos envies.</p>
             </div>
 
             <div class="feature-card">
-                <span class="feature-icon">🛎️</span>
-                <h3 class="feature-title">Majordome 24/7</h3>
-                <p class="feature-description">Conciergerie haut de gamme, excursions privées, services sur-mesure</p>
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="feature-title">Conciergerie 24/7</h3>
+                <p class="feature-description">Majordome dédié, excursions privées, réservations restaurants, et services sur-mesure.</p>
             </div>
 
             <div class="feature-card">
-                <span class="feature-icon">🌴</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3L2 12H5V20H10V14H14V20H19V12H22L12 3Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h3 class="feature-title">Jardin Tropical</h3>
-                <p class="feature-description">3000m² de végétation luxuriante, accès privé à la plage</p>
+                <p class="feature-description">3000m² de végétation luxuriante, accès privé à la plage, et terrasses aménagées.</p>
             </div>
 
             <div class="feature-card">
-                <span class="feature-icon">🎭</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="7" width="20" height="15" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 2L12 7L7 2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h3 class="feature-title">Salle Cinéma</h3>
-                <p class="feature-description">Écran 4K, son Dolby Atmos, bibliothèque de films premium</p>
+                <p class="feature-description">Écran 4K 100 pouces, son Dolby Atmos, sièges premium et bibliothèque de films.</p>
             </div>
 
             <div class="feature-card">
-                <span class="feature-icon">💆</span>
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2V4M12 20V22M4 12H2M22 12H20M19.07 4.93L17.66 6.34M6.34 17.66L4.93 19.07M19.07 19.07L17.66 17.66M6.34 6.34L4.93 4.93" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
                 <h3 class="feature-title">Spa Privé</h3>
-                <p class="feature-description">Jacuzzi, sauna, massages sur rendez-vous par thérapeutes certifiés</p>
+                <p class="feature-description">Jacuzzi, sauna finlandais, hammam et massages sur rendez-vous par thérapeutes certifiés.</p>
             </div>
         </div>
     </section>
 
     <!-- Specifications Section -->
-    <section class="specs-section">
-        <div class="specs-container">
-            <h2 class="specs-title">Fiche Technique</h2>
-            <p class="specs-subtitle">Tous les détails de cette villa d'exception</p>
-            
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <div class="spec-icon">🛏️</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Chambres</div>
-                        <div class="spec-value">4 chambres doubles</div>
-                    </div>
+    <section class="specs-section" id="specifications">
+        <div class="section-header">
+            <div class="section-label">Caractéristiques</div>
+            <h2 class="section-title">Fiche Technique</h2>
+            <p class="section-subtitle">Tous les détails de cette villa d'exception</p>
+        </div>
+        
+        <div class="specs-grid">
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 22V12H15V22" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Chambres</div>
+                    <div class="spec-value">4 chambres doubles de luxe</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">🚿</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Salles de bains</div>
-                        <div class="spec-value">4 salles de bains privatives</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 2V6M15 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Salles de bains</div>
+                    <div class="spec-value">4 salles de bains privatives</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">🏊</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Piscine</div>
-                        <div class="spec-value">Piscine privée chauffée</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M2 12H6L9 3L15 21L18 12H22" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Piscine</div>
+                    <div class="spec-value">Piscine privée chauffée 15x5m</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">👥</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Capacité</div>
-                        <div class="spec-value">8 à 10 personnes</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M23 21V19C23 18.0 22.5 17 21.5 16.5M16 3.13C17 3.5 18 4.5 18 6C18 7.5 17 8.5 16 8.87" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Capacité</div>
+                    <div class="spec-value">8 à 10 personnes maximum</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">❄️</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Climatisation</div>
-                        <div class="spec-value">Toutes les pièces</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Climatisation</div>
+                    <div class="spec-value">Réversible toutes les pièces</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">📶</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Internet</div>
-                        <div class="spec-value">Wi-Fi fibre optique</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12.55C5 12.55 9 7 12 7C15 7 19 12.55 19 12.55" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 15.5C8 15.5 10 12.5 12 12.5C14 12.5 16 15.5 16 15.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="18" r="1" fill="currentColor"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Internet</div>
+                    <div class="spec-value">Wi-Fi fibre optique 1Gb/s</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">🍳</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Cuisine</div>
-                        <div class="spec-value">Équipée haut de gamme</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Cuisine</div>
+                    <div class="spec-value">Équipée haut de gamme Gaggenau</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">🔥</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Barbecue</div>
-                        <div class="spec-value">Grill extérieur professionnel</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 12H16M12 8V16" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Barbecue</div>
+                    <div class="spec-value">Grill Weber professionnel + plancha</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">🚗</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Parking</div>
-                        <div class="spec-value">3 places privées sécurisées</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Parking</div>
+                    <div class="spec-value">3 places privées sécurisées</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">📏</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Surface</div>
-                        <div class="spec-value">300m² habitables</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 3V21M21 9H3M21 15H3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Surface</div>
+                    <div class="spec-value">300m² habitables + terrasses</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">🌴</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Jardin</div>
-                        <div class="spec-value">3000m² paysager</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Jardin</div>
+                    <div class="spec-value">3000m² paysager avec palmiers</div>
                 </div>
+            </div>
 
-                <div class="spec-item">
-                    <div class="spec-icon">🏖️</div>
-                    <div class="spec-content">
-                        <div class="spec-label">Plage</div>
-                        <div class="spec-value">Accès privé direct</div>
-                    </div>
+            <div class="spec-item">
+                <svg class="spec-icon-svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M2 12H6L9 3L15 21L18 12H22" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="spec-content">
+                    <div class="spec-label">Plage</div>
+                    <div class="spec-value">Accès privé direct 50 mètres</div>
                 </div>
             </div>
         </div>
@@ -1891,316 +1245,88 @@
 
     <!-- Gallery Section -->
     <section class="gallery-section" id="galerie">
-        <h2 class="section-title">Galerie Photo</h2>
-        <p class="section-subtitle">
-            Découvrez l'élégance et le raffinement de Villa Azur &amp; Or - Gwada Bel à travers notre sélection de photos
-        </p>
-
-        <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">Toutes</button>
-            <button class="filter-btn" data-filter="exterieur">Extérieur</button>
-            <button class="filter-btn" data-filter="interieur">Intérieur</button>
-            <button class="filter-btn" data-filter="chambres">Chambres</button>
-            <button class="filter-btn" data-filter="piscine">Piscine</button>
+        <div class="section-header">
+            <div class="section-label">Portfolio</div>
+            <h2 class="section-title">Galerie Photo</h2>
+            <p class="section-subtitle">
+                Découvrez l'élégance et le raffinement de Villa Azur & Or à travers notre sélection de photos
+            </p>
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-item" data-category="piscine">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #2A5F7F, #3A7FA0);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Piscine à Débordement</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop" alt="Piscine à débordement vue mer" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Piscine à Débordement</h3>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="exterieur">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #1E3A5F, #2A5F7F);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Terrasse Vue Mer</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop" alt="Terrasse avec vue panoramique" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Terrasse Vue Mer</h3>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="chambres">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #C9A961, #D4AF37);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Chambre Master Suite</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop" alt="Chambre master suite luxe" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Chambre Master Suite</h3>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="interieur">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #0A1931, #1E3A5F);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Salon Principal</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop" alt="Salon principal" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Salon Principal</h3>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="exterieur">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #3A7FA0, #5AA0C0);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Jardin Tropical</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&h=600&fit=crop" alt="Jardin tropical luxuriant" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Jardin Tropical</h3>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="piscine">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #2A5F7F, #D4AF37);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Pool Lounge</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop" alt="Pool lounge avec transats" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Pool Lounge</h3>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="chambres">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #F4E4C1, #C9A961);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Chambre Vue Mer</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop" alt="Chambre avec vue mer" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Chambre Vue Mer</h3>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="interieur">
-                <div class="gallery-image" style="background: linear-gradient(135deg, #1E3A5F, #C9A961);">
-                    <div class="image-overlay">
-                        <span class="view-icon">🔍</span>
-                        <p class="image-title">Cuisine Équipée</p>
-                    </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800&h=600&fit=crop" alt="Cuisine équipée moderne" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Cuisine Équipée</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop" alt="Salle de bain luxe" class="gallery-image">
+                <div class="gallery-overlay">
+                    <h3 class="gallery-title">Salle de Bain Suite</h3>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Location Section -->
-    <section class="location-section" id="localisation">
-        <h2 class="section-title">Localisation Privilégiée</h2>
-        <p class="section-subtitle">
-            Au cœur de Saint-François, paradis des Caraïbes. Accès facile aux plus belles plages et activités de Guadeloupe.
-        </p>
-
-        <div class="location-content">
-            <div class="map-container">
-                <div class="custom-map">
-                    <div class="map-marker">📍</div>
-                    <div class="map-info">Saint-François, Guadeloupe</div>
-                </div>
-            </div>
-
-            <div class="nearby-places">
-                <h3 class="nearby-title">À proximité</h3>
-                
-                <div class="place-item">
-                    <span class="place-icon">🏖️</span>
-                    <div class="place-info">
-                        <h4 class="place-name">Plage des Raisins Clairs</h4>
-                        <p class="place-distance">5 minutes en voiture</p>
-                    </div>
-                </div>
-
-                <div class="place-item">
-                    <span class="place-icon">⛳</span>
-                    <div class="place-info">
-                        <h4 class="place-name">Golf International de Saint-François</h4>
-                        <p class="place-distance">10 minutes en voiture</p>
-                    </div>
-                </div>
-
-                <div class="place-item">
-                    <span class="place-icon">⚓</span>
-                    <div class="place-info">
-                        <h4 class="place-name">Marina de Saint-François</h4>
-                        <p class="place-distance">7 minutes en voiture</p>
-                    </div>
-                </div>
-
-                <div class="place-item">
-                    <span class="place-icon">🍽️</span>
-                    <div class="place-info">
-                        <h4 class="place-name">Restaurants gastronomiques</h4>
-                        <p class="place-distance">5-10 minutes</p>
-                    </div>
-                </div>
-
-                <div class="place-item">
-                    <span class="place-icon">✈️</span>
-                    <div class="place-info">
-                        <h4 class="place-name">Aéroport Pointe-à-Pitre</h4>
-                        <p class="place-distance">30 minutes en voiture</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reservation Section -->
-    <section class="reservation-section" id="reservation">
-        <h2 class="section-title">Réservez Votre Séjour</h2>
-        <p class="section-subtitle">
-            Sélectionnez vos dates et réservez en toute sécurité. Confirmation immédiate.
-        </p>
-
-        <div class="reservation-container">
-            <div class="calendar-container">
-                <h3 class="calendar-title">Sélectionnez vos dates</h3>
-                <div class="calendar-header">
-                    <button class="calendar-nav" id="prevMonth">‹</button>
-                    <span class="calendar-month" id="currentMonth"></span>
-                    <button class="calendar-nav" id="nextMonth">›</button>
-                </div>
-                <div class="calendar-grid" id="calendar"></div>
-                <div class="calendar-legend">
-                    <div class="legend-item">
-                        <span class="legend-color available"></span>
-                        <span>Disponible</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color selected"></span>
-                        <span>Sélectionné</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color booked"></span>
-                        <span>Réservé</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="booking-form">
-                <div class="price-summary">
-                    <div class="price-row">
-                        <span>Tarif par nuit</span>
-                        <span class="price-value">850€</span>
-                    </div>
-                    <div class="price-row">
-                        <span id="nightsDisplay">Nombre de nuits</span>
-                        <span class="price-value" id="nightsCount">0</span>
-                    </div>
-                    <div class="price-row">
-                        <span>Frais de ménage</span>
-                        <span class="price-value">200€</span>
-                    </div>
-                    <div class="price-divider"></div>
-                    <div class="price-row total">
-                        <span>Total</span>
-                        <span class="price-value" id="totalPrice">0€</span>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="bookingForm">
-                    <div class="form-group">
-                        <label>Nom complet</label>
-                        <input type="text" required placeholder="Jean Dupont">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" required placeholder="jean.dupont@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Téléphone</label>
-                        <input type="tel" required placeholder="+590 690 97 73 78">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Message (optionnel)</label>
-                        <textarea rows="3" placeholder="Questions ou demandes spéciales..."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">
-                        Confirmer la réservation
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <h2 class="section-title">Ils Ont Séjourné Chez Nous</h2>
-        <p class="section-subtitle">
-            Découvrez les avis de nos hôtes
-        </p>
-
-        <div class="testimonials-carousel">
-            <button class="carousel-nav carousel-prev">‹</button>
-            
-            <div class="testimonials-track" id="testimonialsTrack">
-                <div class="testimonial-card active">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">
-                        "Un séjour absolument exceptionnel ! La villa est encore plus belle qu'en photos. 
-                        Le majordome était aux petits soins et le chef privé nous a fait découvrir la cuisine créole. 
-                        Nous reviendrons sans hésiter."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ML</div>
-                        <div class="author-info">
-                            <h4 class="author-name">Marie Laurent</h4>
-                            <p class="author-location">Paris, France</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">
-                        "La piscine à débordement avec vue sur la mer est un rêve éveillé. 
-                        Localisation parfaite pour explorer les plus belles plages de Guadeloupe. 
-                        Service impeccable du début à la fin."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SD</div>
-                        <div class="author-info">
-                            <h4 class="author-name">Sophie Dubois</h4>
-                            <p class="author-location">Lyon, France</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">
-                        "Nous avons célébré notre anniversaire de mariage dans cette villa. 
-                        Tout était parfait : le cadre, le confort, les prestations. 
-                        Un souvenir inoubliable !"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PM</div>
-                        <div class="author-info">
-                            <h4 class="author-name">Pierre Martin</h4>
-                            <p class="author-location">Bordeaux, France</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="carousel-nav carousel-next">›</button>
-        </div>
-
-        <div class="carousel-dots" id="carouselDots"></div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="contact">
         <div class="footer-content">
-            <div class="footer-column">
-                <h3 class="footer-logo">Villa Azur &amp; Or - Gwada Bel</h3>
-                <p class="footer-description">
-                    L'excellence caribéenne à l'état pur. Vivez une expérience unique à Saint-François, Guadeloupe.
-                </p>
-                <div class="footer-social">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
-                </div>
+            <div class="footer-brand">
+                <h3>Villa Azur & Or</h3>
+                <p>L'excellence caribéenne à l'état pur. Vivez une expérience unique à Saint-François, Guadeloupe.</p>
+                <p style="color: var(--gold); margin-top: 20px;">📱 +590 690 97 73 78</p>
+                <p style="color: var(--gold);">📧 gwadabelofficiel@gmail.com</p>
             </div>
 
             <div class="footer-column">
@@ -2208,8 +1334,8 @@
                 <ul class="footer-links">
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#villa">La Villa</a></li>
+                    <li><a href="#specifications">Détails</a></li>
                     <li><a href="#galerie">Galerie</a></li>
-                    <li><a href="#reservation">Réservation</a></li>
                 </ul>
             </div>
 
@@ -2226,88 +1352,164 @@
             <div class="footer-column">
                 <h4 class="footer-heading">Contact</h4>
                 <ul class="footer-contact">
-                    <li>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b1bdbca6b3b1a692a4bbbebeb3b3a8a7a0bda0fcb5a2">[email&#160;protected]</a></li>
-                    <li>📞 +590 690 97 73 78</li>
                     <li>📍 Saint-François, Guadeloupe</li>
+                    <li><a href="mailto:gwadabelofficiel@gmail.com">Email : gwadabelofficiel@gmail.com</a></li>
+                    <li><a href="tel:+590690977378">Tel : +590 690 97 73 78</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Villa Azur &amp; Or - Gwada Bel - Saint-François, Guadeloupe. Tous droits réservés.</p>
+            <p>&copy; 2026 Villa Azur & Or - Gwada Bel. Tous droits réservés.</p>
         </div>
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/590690977378" class="whatsapp-button" target="_blank" title="Contactez-nous sur WhatsApp">
-        <span class="whatsapp-icon">💬</span>
+    <a href="https://wa.me/590690977378?text=Bonjour,%20je%20suis%20intéressé%20par%20Villa%20Azur%20%26%20Or" class="whatsapp-button" target="_blank" title="Contactez-nous sur WhatsApp">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
     </a>
+
+    <!-- Chat Trigger Button -->
+    <button class="chat-trigger" id="chatTrigger">
+        <svg class="chat-trigger-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 
     <!-- Chat Widget -->
     <div class="chat-widget" id="chatWidget">
         <div class="chat-header">
-            <div class="chat-avatar">VZ</div>
+            <div class="chat-avatar">VA</div>
             <div class="chat-info">
-                <h4>Villa Azur &amp; Or - Gwada Bel</h4>
+                <h4>Villa Azur & Or</h4>
                 <p class="chat-status">En ligne</p>
             </div>
             <button class="chat-close" id="chatClose">×</button>
         </div>
+        
         <div class="chat-messages" id="chatMessages">
             <div class="chat-message bot">
-                <p>Bonjour ! 👋 Comment puis-je vous aider ?</p>
+                <p>Bonjour ! 👋 Bienvenue à Villa Azur & Or. Comment puis-je vous aider ?</p>
+            </div>
+            <div class="chat-quick-replies" id="quickReplies">
+                <button class="quick-reply" data-message="Disponibilités">📅 Vérifier disponibilités</button>
+                <button class="quick-reply" data-message="Tarifs">💰 Demander les tarifs</button>
+                <button class="quick-reply" data-message="Services">🛎️ Services inclus</button>
+                <button class="quick-reply" data-message="Contact">📞 Parler à un conseiller</button>
             </div>
         </div>
+        
         <div class="chat-input-container">
-            <input type="text" class="chat-input" placeholder="Écrivez votre message..." id="chatInput">
-            <button class="chat-send" id="chatSend">➤</button>
+            <input type="text" class="chat-input" id="chatInput" placeholder="Écrivez votre message...">
+            <button class="chat-send" id="chatSend">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
         </div>
     </div>
 
-    <button class="chat-trigger" id="chatTrigger">
-        💬
-        <span class="chat-badge">1</span>
-    </button>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <div class="lightbox-content">
-            <button class="lightbox-nav lightbox-prev">‹</button>
-            <div class="lightbox-image"></div>
-            <button class="lightbox-nav lightbox-next">›</button>
-        </div>
-        <p class="lightbox-caption"></p>
-    </div>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Create floating particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Navbar scroll effect
-        let lastScroll = 0;
+    <script>
+        // Navigation scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+            if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-            
-            lastScroll = currentScroll;
         });
 
-        // Smooth scrolling
+        // Chat functionality
+        const chatTrigger = document.getElementById('chatTrigger');
+        const chatWidget = document.getElementById('chatWidget');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Open chat
+        chatTrigger.addEventListener('click', () => {
+            chatWidget.classList.add('active');
+            chatTrigger.style.display = 'none';
+            chatInput.focus();
+        });
+
+        // Close chat
+        chatClose.addEventListener('click', () => {
+            chatWidget.classList.remove('active');
+            chatTrigger.style.display = 'flex';
+        });
+
+        // Quick replies
+        document.querySelectorAll('.quick-reply').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const message = e.target.dataset.message;
+                addUserMessage(message);
+                setTimeout(() => respondToQuickReply(message), 800);
+                e.target.parentElement.style.display = 'none';
+            });
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            
+            addUserMessage(message);
+            chatInput.value = '';
+            
+            setTimeout(() => {
+                addBotMessage("Merci pour votre message ! Un de nos conseillers va vous répondre dans quelques instants. Pour une réponse immédiate, vous pouvez aussi nous contacter au +590 690 97 73 78 ou via WhatsApp. 😊");
+            }, 1000);
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message user';
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message bot';
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function respondToQuickReply(type) {
+            let response = '';
+            switch(type) {
+                case 'Disponibilités':
+                    response = "Pour vérifier nos disponibilités en temps réel, je vous invite à nous contacter directement :<br><br>📞 Téléphone : +590 690 97 73 78<br>💬 WhatsApp : Cliquez sur le bouton vert en bas à droite<br>📧 Email : gwadabelofficiel@gmail.com<br><br>Nous vous répondrons dans l'heure ! 😊";
+                    break;
+                case 'Tarifs':
+                    response = "Nos tarifs varient selon la saison :<br><br>🌴 Basse saison (mai-nov) : À partir de 650€/nuit<br>☀️ Haute saison (déc-avril) : À partir de 850€/nuit<br>🎄 Période fêtes : Nous consulter<br><br>Inclus : Ménage, linge, WiFi, piscine chauffée<br><br>Souhaitez-vous un devis personnalisé ?";
+                    break;
+                case 'Services':
+                    response = "Services inclus :<br>✅ Piscine chauffée<br>✅ WiFi fibre<br>✅ Linge de maison<br>✅ Ménage fin de séjour<br><br>Services sur demande :<br>⭐ Chef privé<br>⭐ Majordome<br>⭐ Spa & massages<br>⭐ Excursions privées<br><br>Besoin de plus d'infos ?";
+                    break;
+                case 'Contact':
+                    response = "Parfait ! Voici comment nous joindre :<br><br>📞 Téléphone : +590 690 97 73 78<br>💬 WhatsApp : Clic sur le bouton vert<br>📧 Email : gwadabelofficiel@gmail.com<br><br>Nous sommes disponibles 7j/7 de 8h à 20h. À tout de suite ! 😊";
+                    break;
+                default:
+                    response = "Merci ! Comment puis-je vous aider ?";
+            }
+            addBotMessage(response);
+        }
+
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2320,320 +1522,6 @@
                 }
             });
         });
-
-        // Parallax effect on hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-bg');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Gallery filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 10);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-
-        // Lightbox functionality
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.querySelector('.lightbox-image');
-        const lightboxCaption = document.querySelector('.lightbox-caption');
-        const lightboxClose = document.querySelector('.lightbox-close');
-        let currentImageIndex = 0;
-        const images = [];
-
-        // Populate images array and add click handlers
-        document.querySelectorAll('.gallery-item').forEach((item, index) => {
-            const title = item.querySelector('.image-title').textContent;
-            const bgStyle = item.querySelector('.gallery-image').style.background;
-            images.push({ title, bgStyle });
-
-            item.addEventListener('click', () => {
-                currentImageIndex = index;
-                openLightbox();
-            });
-        });
-
-        function openLightbox() {
-            lightbox.classList.add('active');
-            updateLightboxImage();
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function updateLightboxImage() {
-            const currentImage = images[currentImageIndex];
-            lightboxImage.style.background = currentImage.bgStyle;
-            lightboxCaption.textContent = currentImage.title;
-        }
-
-        lightboxClose.addEventListener('click', closeLightbox);
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-
-        document.querySelector('.lightbox-prev').addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            updateLightboxImage();
-        });
-
-        document.querySelector('.lightbox-next').addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            updateLightboxImage();
-        });
-
-        // Keyboard navigation for lightbox
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            
-            if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key === 'ArrowLeft') {
-                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                updateLightboxImage();
-            } else if (e.key === 'ArrowRight') {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                updateLightboxImage();
-            }
-        });
-
-        // Calendar functionality
-        let currentDate = new Date();
-        let selectedDates = [];
-        const bookedDates = [3, 4, 5, 15, 16, 22, 23, 24, 25]; // Example booked dates
-
-        function renderCalendar() {
-            const calendar = document.getElementById('calendar');
-            const monthDisplay = document.getElementById('currentMonth');
-            
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            
-            monthDisplay.textContent = currentDate.toLocaleDateString('fr-FR', { 
-                month: 'long', 
-                year: 'numeric' 
-            });
-
-            calendar.innerHTML = '';
-
-            // Day headers
-            const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-            days.forEach(day => {
-                const dayHeader = document.createElement('div');
-                dayHeader.className = 'calendar-day header';
-                dayHeader.textContent = day;
-                calendar.appendChild(dayHeader);
-            });
-
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1;
-
-            // Previous month days
-            for (let i = 0; i < adjustedFirstDay; i++) {
-                const dayCell = document.createElement('div');
-                dayCell.className = 'calendar-day other-month';
-                calendar.appendChild(dayCell);
-            }
-
-            // Current month days
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayCell = document.createElement('div');
-                dayCell.textContent = day;
-                
-                if (bookedDates.includes(day)) {
-                    dayCell.className = 'calendar-day booked';
-                } else if (selectedDates.includes(day)) {
-                    dayCell.className = 'calendar-day selected';
-                } else {
-                    dayCell.className = 'calendar-day available';
-                    dayCell.addEventListener('click', () => selectDate(day));
-                }
-                
-                calendar.appendChild(dayCell);
-            }
-
-            updatePrice();
-        }
-
-        function selectDate(day) {
-            if (selectedDates.length === 0) {
-                selectedDates.push(day);
-            } else if (selectedDates.length === 1) {
-                selectedDates.push(day);
-                selectedDates.sort((a, b) => a - b);
-            } else {
-                selectedDates = [day];
-            }
-            renderCalendar();
-        }
-
-        function updatePrice() {
-            const nightsCount = document.getElementById('nightsCount');
-            const totalPrice = document.getElementById('totalPrice');
-            
-            if (selectedDates.length === 2) {
-                const nights = selectedDates[1] - selectedDates[0];
-                const pricePerNight = 850;
-                const cleaningFee = 200;
-                const total = (nights * pricePerNight) + cleaningFee;
-                
-                nightsCount.textContent = nights;
-                totalPrice.textContent = total.toLocaleString() + '€';
-            } else {
-                nightsCount.textContent = '0';
-                totalPrice.textContent = '0€';
-            }
-        }
-
-        document.getElementById('prevMonth').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            selectedDates = [];
-            renderCalendar();
-        });
-
-        document.getElementById('nextMonth').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            selectedDates = [];
-            renderCalendar();
-        });
-
-        renderCalendar();
-
-        // Booking form submission
-        document.getElementById('bookingForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (selectedDates.length === 2) {
-                alert('Réservation confirmée ! Vous recevrez un email de confirmation.');
-            } else {
-                alert('Veuillez sélectionner vos dates d\'arrivée et de départ.');
-            }
-        });
-
-        // Testimonials carousel
-        let currentTestimonial = 0;
-        const testimonials = document.querySelectorAll('.testimonial-card');
-        const testimonialsTrack = document.getElementById('testimonialsTrack');
-        const dotsContainer = document.getElementById('carouselDots');
-
-        // Create dots
-        testimonials.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
-            dot.addEventListener('click', () => goToTestimonial(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        function updateTestimonials() {
-            const dots = document.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentTestimonial);
-            });
-
-            testimonialsTrack.style.transform = `translateX(-${currentTestimonial * 100}%)`;
-            testimonialsTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
-
-        function goToTestimonial(index) {
-            currentTestimonial = index;
-            updateTestimonials();
-        }
-
-        document.querySelector('.testimonials-section .carousel-prev').addEventListener('click', () => {
-            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-            updateTestimonials();
-        });
-
-        document.querySelector('.testimonials-section .carousel-next').addEventListener('click', () => {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            updateTestimonials();
-        });
-
-        // Auto-rotate testimonials
-        setInterval(() => {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            updateTestimonials();
-        }, 6000);
-
-        // Chat widget functionality
-        const chatTrigger = document.getElementById('chatTrigger');
-        const chatWidget = document.getElementById('chatWidget');
-        const chatClose = document.getElementById('chatClose');
-        const chatInput = document.getElementById('chatInput');
-        const chatSend = document.getElementById('chatSend');
-        const chatMessages = document.getElementById('chatMessages');
-        const chatBadge = document.querySelector('.chat-badge');
-
-        chatTrigger.addEventListener('click', () => {
-            chatWidget.classList.add('active');
-            chatTrigger.style.display = 'none';
-            chatBadge.style.display = 'none';
-        });
-
-        chatClose.addEventListener('click', () => {
-            chatWidget.classList.remove('active');
-            chatTrigger.style.display = 'flex';
-        });
-
-        function addMessage(text, isBot = false) {
-            const message = document.createElement('div');
-            message.className = `chat-message ${isBot ? 'bot' : 'user'}`;
-            message.innerHTML = `<p>${text}</p>`;
-            chatMessages.appendChild(message);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function sendMessage() {
-            const text = chatInput.value.trim();
-            if (!text) return;
-
-            addMessage(text, false);
-            chatInput.value = '';
-
-            // Auto-response simulation
-            setTimeout(() => {
-                const responses = [
-                    "Merci pour votre message ! Nous vous répondrons dans quelques instants. 😊",
-                    "Pour une réservation, n'hésitez pas à utiliser notre formulaire en ligne ou appelez-nous au +590 690 97 73 78.",
-                    "Nous sommes disponibles 24/7 pour répondre à toutes vos questions sur Villa Azur &amp; Or - Gwada Bel."
-                ];
-                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-                addMessage(randomResponse, true);
-            }, 1000);
-        }
-
-   
+    </script>
+</body>
+</html>
