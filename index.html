@@ -1069,4 +1069,89 @@ function respondToQuickReply(type) {
             response = "Merci ! Comment puis-je vous aider ?";
     }
     addBotMessage(response);
-}</script></body></html>
+}<!-- Script JavaScript principal -->
+<script>
+/* ===== GALERIE LIGHTBOX ===== */
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxCaption = document.getElementById('lightboxCaption');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxNext = document.getElementById('lightboxNext');
+const lightboxPrev = document.getElementById('lightboxPrev');
+
+const galleryItems = document.querySelectorAll('.gallery-item');
+let currentIndex = 0;
+
+function openLightbox(index) {
+    const item = galleryItems[index];
+    const img = item.querySelector('img');
+    lightboxImage.src = img.src;
+    lightboxCaption.textContent = item.querySelector('.gallery-title').textContent;
+    lightbox.classList.add('active');
+    currentIndex = index;
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    openLightbox(currentIndex);
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    openLightbox(currentIndex);
+}
+
+galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => openLightbox(index));
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxNext.addEventListener('click', nextImage);
+lightboxPrev.addEventListener('click', prevImage);
+
+/* ===== RÉSERVATION CALCUL PRIX ===== */
+const calendar = document.getElementById('calendar');
+const nightsCount = document.getElementById('nightsCount');
+const subtotal = document.getElementById('subtotal');
+const totalPrice = document.getElementById('totalPrice');
+const pricePerNight = 850;
+const cleaningFee = 200;
+
+let selectedDates = [];
+
+function updateBookingSummary() {
+    const nights = selectedDates.length;
+    const subTotalValue = nights * pricePerNight;
+    nightsCount.textContent = nights;
+    subtotal.textContent = subTotalValue + '€';
+    totalPrice.textContent = (subTotalValue + cleaningFee) + '€';
+}
+
+// Ici tu peux ajouter ton code de calendrier si tu en as un, sinon ça affichera juste 0 nuits par défaut
+
+/* ===== TESTIMONIAL CAROUSEL ===== */
+const track = document.getElementById('testimonialsTrack');
+const prevBtn = document.querySelector('.carousel-prev');
+const nextBtn = document.querySelector('.carousel-next');
+
+let currentSlide = 0;
+
+function updateCarousel() {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + track.children.length) % track.children.length;
+    updateCarousel();
+});
+
+nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % track.children.length;
+    updateCarousel();
+});
+</script>
+</body></html>
